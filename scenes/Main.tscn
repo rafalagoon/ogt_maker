@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Main.gd" type="Script" id=1]
+[ext_resource path="res://assets/toilet_paper.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/GamjaFlower-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = SubResource( 2 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Toilet" type="ColorRect" parent="."]
+margin_left = 592.0
+margin_top = 32.0
+margin_right = 1248.0
+margin_bottom = 688.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Toilet"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="GridContainer" type="GridContainer" parent="Toilet/CenterContainer"]
+unique_name_in_owner = true
+margin_left = 328.0
+margin_top = 328.0
+margin_right = 328.0
+margin_bottom = 328.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+margin_left = 55.0
+margin_top = 206.0
+margin_right = 544.0
+margin_bottom = 673.0
+
+[node name="CleanButton" type="Button" parent="."]
+margin_left = 283.0
+margin_top = 70.0
+margin_right = 545.0
+margin_bottom = 158.0
+custom_fonts/font = SubResource( 1 )
+text = "Limpiar"
+icon = ExtResource( 3 )
+
+[node name="FlushButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 68.0
+margin_right = 271.0
+margin_bottom = 159.0
+custom_fonts/font = SubResource( 1 )
+text = "Guardar"
+
+[connection signal="gui_input" from="Toilet" to="." method="_on_Toilet_gui_input"]
+[connection signal="pressed" from="CleanButton" to="." method="_on_CleanButton_pressed"]
+[connection signal="pressed" from="FlushButton" to="." method="_on_FlushButton_pressed"]
